@@ -1,19 +1,34 @@
 <template>
   <div id="app">
     <img src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <div>
+      <label for="vat"> VAT in %</label>
+      <input id="vat" type="number" v-model="vatRate">
+    </div>
+     <ExpenseForm :currencies="currencies" :vatRate="vatRate" :expenses="expenses" />
+     <div class="divider"></div>
+     <ExpenseList :currencies="currencies" :expenses="expenses" :vatRate="vatRate" />
   </div>
+
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import ExpenseForm from './components/ExpenseForm.vue'
+import ExpenseList from './components/ExpenseList.vue'
 
 export default {
   name: 'app',
   components: {
-    HelloWorld
+    ExpenseForm,
+    ExpenseList
+  },
+   data: () => ({
+     vatRate: "20",
+    expenses: [],
+    currencies: [{name: "EUR", symbol: "€"}, {name: "USD", symbol: "$"}, {name: "GBP", symbol: "£"}],
+  }),
+  
   }
-}
 </script>
 
 <style>
@@ -24,5 +39,8 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+.divider {
+  height: 30px;
 }
 </style>
