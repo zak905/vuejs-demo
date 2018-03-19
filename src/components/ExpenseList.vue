@@ -28,17 +28,12 @@ export default {
   props: {
     currencies: Array,
     expenses: Array,
-    vatRate: String
-  },
-  computed: {
-      totalVat: (amount) => {return this.vatRateAsNumber * amount;},
-      vatRateAsNumber: () => {return Number.parseInt(this.vatRate) / 100;}
   },
   methods: {
       getCurrencySymbol: (currencyName, currencies) => {
             for (let i = 0; i < currencies.length; i++ ) {
             if (currencyName === currencies[i].name)
-                      return currencies[i].symbol;
+               return currencies[i].symbol;
           }  
           return "$"
           }

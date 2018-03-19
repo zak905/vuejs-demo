@@ -7,7 +7,7 @@
     </div>
      <ExpenseForm :currencies="currencies" :vatRate="vatRate" :expenses="expenses" />
      <div class="divider"></div>
-     <ExpenseList :currencies="currencies" :expenses="expenses" :vatRate="vatRate" />
+     <ExpenseList :currencies="currencies" :expenses="expenses"/>
   </div>
 
 </template>
@@ -23,7 +23,7 @@ export default {
     ExpenseList
   },
    data: () => ({
-     vatRate: "20",
+     vatRate: 20,
     expenses: [],
     currencies: [{name: "EUR", symbol: "€"}, {name: "USD", symbol: "$"}, {name: "GBP", symbol: "£"}],
   }),

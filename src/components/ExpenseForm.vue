@@ -29,25 +29,17 @@ export default {
       amount: 0,
       date: '',
       reason: '',
-      amountVAT: 0,
       currency: ''
       }
   },
   props: {
     currencies: Array,
     expenses: Array,
-    vatRate: String,
+    vatRate: Number,
   },
-    
-    watch: {
-        amount: function (amount) {
-        this.amountVAT = parseFloat(Number.parseInt(this.vatRate) / 100 * this.amount).toFixed(2)
-        },
-        vatRate: function (amount) {
-        this.amountVAT = parseFloat(Number.parseInt(this.vatRate) / 100 * this.amount).toFixed(2)
-        }
-    },
-created: () => {console.log(this.vatRate)}
+    computed: {
+      amountVAT: function() {return parseFloat(this.vatRate / 100 * this.amount).toFixed(2)}
+    }
 }
 </script>
 
